@@ -1,16 +1,19 @@
 const jambo = document.getElementById("cat__one");
 const theCat = document.getElementById("cat__two");
 
-let jamboCount = 0;
-let catCount = 0;
+/**
+ * Function to count the clicks on a cat.
+ * @param {string} element The element that is going to listen to the event.
+ * @param {string} figcaption Which 'figcaption' element to show the count.
+ * @param {string} name The cat's name.
+ */
+const catClick = (element, figcaption, name) => {
+  let count = 0;
+  element.addEventListener("click", () => {
+    count++;
+    document.getElementById(figcaption).innerHTML = `${name}: ${count} clicks.`;
+  });
+};
 
-jambo.addEventListener("click", () => {
-  jamboCount += 1;
-  // eslint-disable-next-line prettier/prettier
-  document.getElementById("figCapOne").innerHTML = `Jambo: ${jamboCount} clicks.`;
-});
-
-theCat.addEventListener("click", () => {
-  catCount += 1;
-  document.getElementById("figCapTwo").innerHTML = `Cat: ${catCount} clicks.`;
-});
+catClick(jambo, "figCapOne", "Jambo");
+catClick(theCat, "figCapTwo", "Cat");
