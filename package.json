@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-jsdoc": "jsdoc -c ./app.js"
   },
   "author": "Bruno gurgel",
   "license": "MIT",
@@ -14,6 +15,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.2.0",
+    "jsdoc": "^3.6.6",
     "prettier": "^2.2.1"
   }
 }
