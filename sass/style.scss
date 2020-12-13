@@ -36,7 +36,7 @@ header {
   }
   figure {
     width: 50%;
-    display: none;
+    display: block;
     margin: 20px auto 0px auto;
   }
 }
@@ -44,8 +44,8 @@ header {
 aside {
   grid-area: list;
   border-left: 2px inset #ccc;
-  a {
-    color: #000000;
+  li {
+    cursor: pointer;
   }
 }
 

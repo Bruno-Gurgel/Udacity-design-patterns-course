@@ -34,7 +34,7 @@ header p {
 }
 .cat__div figure {
   width: 50%;
-  display: none;
+  display: block;
   margin: 20px auto 0px auto;
 }
 
@@ -42,8 +42,8 @@ aside {
   grid-area: list;
   border-left: 2px inset #ccc;
 }
-aside a {
-  color: #000000;
+aside li {
+  cursor: pointer;
 }
 
 footer {
