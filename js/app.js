@@ -135,9 +135,7 @@ const catListView = {
 
       /**
        * Adding an event listener to the recently created items.
-       * @return {function (cat object) {
-         When an item of the list is clicked, changes the current cat and renders the cat view.
-       }}
+       * @return {function} When an item of the list is clicked, changes the current cat and renders the cat view.
        */
       listItem.addEventListener(
         "click",
