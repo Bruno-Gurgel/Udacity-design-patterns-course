@@ -43,6 +43,9 @@ const model = {
 
 /* ======= Octopus ======= */
 const octopus = {
+  /**
+   * Function to initiate all the code.
+   */
   init: () => {
     // Initially, the current cat is the first on the list.
     model.currentCat = model.cats[0];
@@ -50,15 +53,30 @@ const octopus = {
     catListView.init();
     catView.init();
   },
+  /**
+   * Function to get the current cat from the model object.
+   * @return {object} The current cat.
+   */
   getCurrentCat: () => {
     return model.currentCat;
   },
+  /**
+   * Function to get the the cats array from the model object.
+   * @return {object} The cats array.
+   */
   getCats: () => {
     return model.cats;
   },
+  /**
+   * Function to get the current cat from the model object.
+   * @param {object} cat The cat object within the cats array that will be the new current cat.
+   */
   setCurrentCat: (cat) => {
     model.currentCat = cat;
   },
+  /**
+   * Function that increments the counter for the currently-selected cat when its image is clicked.
+   */
   incrementCounter: () => {
     model.currentCat.count++;
     catView.render();
@@ -67,6 +85,9 @@ const octopus = {
 
 /* ======= View ======= */
 const catView = {
+  /**
+   * Function to initiate the view relative to the cat image.
+   */
   init: function () {
     // store pointers to our DOM elements for easy access later
     this.catImageElem = document.getElementById("cat-image");
@@ -80,6 +101,9 @@ const catView = {
     // render this view (update the DOM elements with the right values)
     this.render();
   },
+  /**
+   * Function that renders the content in the screen.
+   */
   render: function () {
     const currentCat = octopus.getCurrentCat();
     this.catImageElem.src = currentCat.imagePath;
@@ -89,11 +113,17 @@ const catView = {
 };
 
 const catListView = {
+  /**
+   * Function to initiate the view relative to the list of cats.
+   */
   init: function () {
     this.catListElem = document.getElementById("cat-list");
 
     this.render();
   },
+  /**
+   * Function that renders the content in the screen.
+   */
   render: function () {
     const cats = octopus.getCats();
     let listItem = "";
@@ -103,6 +133,12 @@ const catListView = {
       listItem = document.createElement("li");
       listItem.textContent = cat.name;
 
+      /**
+       * Adding an event listener to the recently created items.
+       * @return {function (cat object) {
+         When an item of the list is clicked, changes the current cat and renders the cat view.
+       }}
+       */
       listItem.addEventListener(
         "click",
         ((catCopy) => {
@@ -117,4 +153,5 @@ const catListView = {
   },
 };
 
+// Initializing the code
 octopus.init();
