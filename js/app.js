@@ -52,6 +52,7 @@ const octopus = {
     // Initializing views.
     catListView.init();
     catView.init();
+    adminView.init();
   },
   /**
    * Function to get the current cat from the model object.
@@ -80,6 +81,27 @@ const octopus = {
   incrementCounter: () => {
     model.currentCat.count++;
     catView.render();
+    adminView.render();
+  },
+
+  openAdminView: () => {
+    adminView.adminButton.addEventListener("click", () => {
+      adminView.adminDiv.style.display = "block";
+    });
+  },
+
+  closeAdminView: () => {
+    adminView.cancelButton.addEventListener("click", () => {
+      adminView.adminDiv.style.display = "none";
+    });
+  },
+
+  updateAdminView: () => {
+    adminView.saveButton.addEventListener("click", () => {
+      /* model.currentCat.name = this.adminName.value;
+      model.currentCat.imagePath = this.adminPath.value; */
+      adminView.adminDiv.style.display = "none";
+    });
   },
 };
 
@@ -148,6 +170,31 @@ const catListView = {
       );
       this.catListElem.appendChild(listItem);
     }
+  },
+};
+
+const adminView = {
+  init: function () {
+    this.adminDiv = document.querySelector(".admin");
+    this.adminName = document.getElementById("form-name");
+    this.adminPath = document.getElementById("form-path");
+    this.adminClicks = document.getElementById("form-clicks");
+    this.adminButton = document.getElementById("admin-button");
+    this.cancelButton = document.getElementById("cancel-button");
+    this.saveButton = document.getElementById("save-button");
+
+    octopus.openAdminView();
+    octopus.closeAdminView();
+    octopus.updateAdminView();
+
+    this.render();
+  },
+  render: function () {
+    const currentCat = octopus.getCurrentCat();
+
+    this.adminName.defaultValue = `${currentCat.name}`;
+    this.adminPath.defaultValue = `${currentCat.imagePath}`;
+    this.adminClicks.value = `${currentCat.count}`;
   },
 };
 
