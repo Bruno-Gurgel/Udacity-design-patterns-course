@@ -87,6 +87,7 @@ const octopus = {
   openAdminView: () => {
     adminView.adminButton.addEventListener("click", () => {
       adminView.adminDiv.style.display = "block";
+      adminView.render();
     });
   },
 
@@ -98,8 +99,10 @@ const octopus = {
 
   updateAdminView: () => {
     adminView.saveButton.addEventListener("click", () => {
-      /* model.currentCat.name = this.adminName.value;
-      model.currentCat.imagePath = this.adminPath.value; */
+      model.currentCat.name = adminView.adminName.value;
+      model.currentCat.imagePath = adminView.adminPath.value;
+      catView.render();
+      catListView.render();
       adminView.adminDiv.style.display = "none";
     });
   },
@@ -192,7 +195,7 @@ const adminView = {
   render: function () {
     const currentCat = octopus.getCurrentCat();
 
-    this.adminName.defaultValue = `${currentCat.name}`;
+    this.adminName.value = `${currentCat.name}`;
     this.adminPath.defaultValue = `${currentCat.imagePath}`;
     this.adminClicks.value = `${currentCat.count}`;
   },
