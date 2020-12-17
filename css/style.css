@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 80% 20%;
   grid-template-rows: min-content;
-  grid-template-areas: "nav    nav" "image  list" "footer footer";
+  grid-template-areas: "nav    nav" "image  list" "admin  list" "footer footer";
 }
 
 header {
@@ -25,7 +25,7 @@ header p {
 .cat__div {
   grid-area: image;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .cat__div h1 {
   text-align: center;
@@ -36,6 +36,34 @@ header p {
   width: 50%;
   display: block;
   margin: 20px auto 0px auto;
+}
+.cat__div button {
+  width: 20%;
+  cursor: pointer;
+  margin: 0 auto 0 auto;
+}
+
+.admin {
+  margin-top: 10px;
+  grid-area: admin;
+  text-align: center;
+  display: none;
+}
+.admin form {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin form input {
+  width: 20%;
+  text-align: center;
+  color: green;
+}
+.admin button {
+  width: 10%;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 aside {
